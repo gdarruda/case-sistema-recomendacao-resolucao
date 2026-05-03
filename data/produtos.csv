@@ -1,0 +1,21 @@
+produto,categoria,receita_media,custo_aquisicao,margem,publico_alvo
+cartao_platinum,cartao,45.0,8.0,0.82,Clientes com volume medio-alto de gastos mensais no cartao
+cartao_black,cartao,120.0,18.0,0.85,Clientes ultra-premium com alto volume de gastos e viagens frequentes
+credito_pessoal,credito,210.0,35.0,0.83,Clientes com necessidade de credito e bom score
+credito_consignado,credito,180.0,28.0,0.84,Clientes com renda comprovada via folha de pagamento
+cheque_especial,credito,90.0,12.0,0.87,Clientes que precisam de credito emergencial de curto prazo
+uso_lastro_limite,credito,35.0,5.0,0.86,Clientes com investimentos que desejam aumentar limite do cartao
+pix_parcelado,credito,25.0,4.0,0.84,Clientes digitais que desejam parcelar transferencias
+investimento_cdb,investimento,95.0,10.0,0.89,Clientes com capital disponivel para investimento de baixo risco
+investimento_lci_lca,investimento,110.0,14.0,0.87,Clientes com perfil investidor que buscam isencao de IR
+previdencia,investimento,150.0,20.0,0.87,Clientes com visao de longo prazo e capacidade de poupanca
+tesouro_direto,investimento,70.0,8.0,0.89,Clientes que buscam investimento seguro com liquidez
+seguro_vida,seguro,85.0,12.0,0.86,"Clientes com dependentes, preocupados com protecao financeira"
+seguro_residencial,seguro,55.0,8.0,0.85,Clientes proprietarios de imovel
+seguro_auto,seguro,130.0,22.0,0.83,Clientes proprietarios de veiculo
+seguro_viagem,seguro,40.0,6.0,0.85,Clientes que viajam com frequencia
+consorcio_auto,consorcio,320.0,45.0,0.86,Clientes que desejam adquirir veiculo de forma planejada
+consorcio_imovel,consorcio,450.0,55.0,0.88,Clientes que desejam adquirir imovel de forma planejada
+conta_digital_plus,conta,30.0,5.0,0.83,Clientes digitais que buscam praticidade e cashback
+titulo_capitalizacao,capitalizacao,60.0,10.0,0.83,Clientes que buscam oportunidade de sorteio com reserva financeira
+portabilidade_salario,conta,20.0,3.0,0.85,Clientes com conta salario em outro banco
