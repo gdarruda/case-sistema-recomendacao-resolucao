@@ -12,7 +12,7 @@ A análise exploratória revelou características interessantes para problema de
 
 * Sazonalidade: produtos como previdência apresentam ciclos anuais fortes, influenciando  a propensão de contratação em meses específicos (safras de final de ano).
 
-* Comportamento Pós-Clique: identificou-se que a propensão de contratação aumenta significativamente após o primeiro clique, sugerindo que sinais de navegação em tempo real são preditores valiosos.
+* Comportamento Pós-Clique: identificou-se que a propensão de contratação muda após o primeiro clique, sugerindo que sinais de navegação em tempo real são preditores valiosos.
 
 * Força do Baseline: as regras atuais baseadas em segmento (Básico, Intermediário, Premium) são competitivas, estabelecendo um patamar alto para ganho incremental (lift).
 
@@ -34,7 +34,7 @@ Os experimentos focaram em superar o baseline estático através de modelos de b
 
 ## 4. Arquitetura de Produção (arquitetura_producao.ipynb)
 
-A arquitetura ideal depende dos avanços que serão feitos com modelos, especialmente em dados. Para os dados atuais, uma solução batch é adequda. Para o futuro, entendo que o caminho ideal é uma estratégida de predição NRT (Near Real Time) com dispnonbilização em RT.
+A arquitetura ideal depende dos avanços que serão feitos com modelos, especialmente na natureza dos dados. Para o cenário atual, uma solução batch é adequada. Para o futuro, entendo que o caminho ideal é uma estratégida de predição NRT (Near Real Time) com dispnonbilização em RT.
 
 Independente da arquitetura de predizer e servir, alguns aspectos chaves precisam ser tratados:
 
@@ -44,8 +44,14 @@ Independente da arquitetura de predizer e servir, alguns aspectos chaves precisa
 
 * Cold start de produtos: os modelos baseline e propostos não tratam esse problema diretamente. Uma solução de engenharia possível, seria forçar a recomendação de determinados produtos independente do modelo.
 
-5. Limitações e Próximos Passos
+## 5. Limitações e Próximos Passos
 
-Limitação: os modelos propostos não tratam a questão de novos produtos e apresentaram restultados similares ao baseline nos testes.
+Os modelos propostos não obtiveram bons resultados, mas existe uma perspectiva de explorar melhor o ajuste fino de parâmetros e uso de outros dados. Entretanto, existem limitações conceituais como a questão de lidar com produtos novos em uma solução pointwise como a proposta. Nesse contexto, vejo os seguintes passos:
 
-Evolução: explorar dados que possam ser relevantes; evoluir os modelos desenvolvidos para ajuste fine de hiperparâmetros e transformação de dados; uso de modelos que possam ter melhor poder de generalização e lidar com limitações da solução atual.
+* explorar dados que possam ser relevantes para predição, especialmente pensando em interação com os produtos e canais (aplicativo, chats, transações);
+
+* evoluir os modelos desenvolvidos para ajuste fine de hiperparâmetros, transformação de dados e validações mais robustas;
+
+* explorar alternativas que lidem com as limitações do baseline, como Contextual Bandits para novos produtos;
+
+* experimentar modelos com abordagens complementares, como filtros de conteúdo e redes neurais.
