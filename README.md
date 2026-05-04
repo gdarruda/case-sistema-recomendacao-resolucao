@@ -18,9 +18,9 @@ A análise exploratória revelou características interessantes para problema de
 
 * Poucas interações: é um problema de eventos raros, a maioria das recomendações não tem interação do cliente, o que cria desafios para a modelagem.
 
-## 3. Modelagem e Resultados (modelos_desafiantes.ipynb e resultados.ipynb)
+## 3. Modelagem e Resultados (modelos_desafiantes.ipynb, modelos_desafiantes_mes.ipynb e resultados.ipynb)
 
-Os experimentos focaram em superar o baseline estático através de modelos de boosting:
+Os experimentos focaram em superar o baseline estático e extrair insights. Foram experimentados modelos de boosting para agilizar a prototipação:
 
 * Impacto da Safra: a adição da informação temporal ("safra") gerou o maior lift no NDCG@5, embora sua utilização exija cautela para garantir a generalização em períodos futuros. **Não foi utlizado** na predição final conforme recomendado por e-mail.
 
@@ -28,13 +28,15 @@ Os experimentos focaram em superar o baseline estático através de modelos de b
 
 * Otimização de Negócio: foram testadas estratégias de pesos de amostra baseados na receita média dos produtos para alinhar o modelo ao objetivo financeiro do banco.
 
-* Desempenho: os modelos ficaram muito próximos do baseline, mesmo sem grandes alterações. O modelo atual (XGBoost) apresentou tendências de overfitting durante a busca de hiperparâmetros, exigindo maior refinamento no tratamento do desequilíbrio de classes.
+* Uso de Lambda MART: foi testado o uso de Lambda MART, para otimizar o modelo diretamente para a métrica NDCG. Entretanto, foram encontrados desafios para adaptar o conjunto de dados para o formato ideal.
 
-* Insights: a efetividade do baseline indica caminhos possíveis de evolução. Uso de modelos mais simples e eficientes podem ser a resposta, abordagens alternativas podem ser o caminho correto.
+* Otimização: os modelos desafiantes ficaram muito próximos do baseline. O modelo escolhido apresentou tendências de overfitting durante a busca de hiperparâmetros, indicando espaço para uma otimização mais cuidadosa.
+
+* Insights: a efetividade do baseline indica caminhos possíveis de evolução. Podemos aprimorar o baseline em combinação com uma estratégia de contextual bandits e explorar outras variáveis que possam agregar para os modelos mais complexos.
 
 ## 4. Arquitetura de Produção (arquitetura_producao.ipynb)
 
-A arquitetura ideal depende dos avanços que serão feitos com modelos, especialmente na natureza dos dados. Para o cenário atual, uma solução batch é adequada. Para o futuro, entendo que o caminho ideal é uma estratégida de predição NRT (Near Real Time) com dispnonbilização em RT.
+A arquitetura ideal depende dos avanços que serão feitos com modelos, especialmente na natureza dos dados utilizados. Para o cenário atual, uma solução batch é adequada. Para o futuro, entendo que o caminho ideal é uma estratégida de predição NRT (Near Real Time) com dispnonbilização em RT.
 
 Independente da arquitetura de predizer e servir, alguns aspectos chaves precisam ser tratados:
 
@@ -46,12 +48,12 @@ Independente da arquitetura de predizer e servir, alguns aspectos chaves precisa
 
 ## 5. Limitações e Próximos Passos
 
-Os modelos propostos não obtiveram bons resultados, mas existe uma perspectiva de explorar melhor o ajuste fino de parâmetros e uso de outros dados. Entretanto, existem limitações conceituais como a questão de lidar com produtos novos em uma solução pointwise como a proposta. Nesse contexto, vejo os seguintes passos:
+Os modelos propostos não obtiveram bons resultados, mas existe uma perspectiva de explorar melhor o ajuste fino de parâmetros e tratamento de dados. Entretanto, existem limitações conceituais como a questão de lidar com produtos novos em uma solução pointwise como a proposta. Nesse contexto, vejo os seguintes passos:
 
 * explorar dados que possam ser relevantes para predição, especialmente pensando em interação com os produtos e canais (aplicativo, chats, transações);
 
-* evoluir os modelos desenvolvidos para ajuste fine de hiperparâmetros, transformação de dados e validações mais robustas;
+* evoluir os modelos desenvolvidos para ajuste fino de hiperparâmetros, transformação de dados e validações mais robustas;
 
 * explorar alternativas que lidem com as limitações do baseline, como Contextual Bandits para novos produtos;
 
-* experimentar modelos com abordagens complementares, como filtros de conteúdo e redes neurais.
+* experimentar modelos com abordagens complementares, como filtros basedo em  conteúdo e redes neurais.
